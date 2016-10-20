@@ -6,11 +6,11 @@
 #' @param character.only logical. default = FALSE (function will deparse object name to character)
 #' @param force logical. default = FALSE. If set to TRUE package will be detached even though other attached packages depend on it
 #' @examples
-#' install.packages("ggplot2")
-#' library(ggplot2)
-#' unloadPackage(ggplot2)
-#' library(ggplot2)
-#' unloadPackage("ggplot2")
+#' #install.packages("ggplot2")
+#' #library(ggplot2)
+#' #unloadPackage(ggplot2)
+#' #library(ggplot2)
+#' #unloadPackage("ggplot2")
 
 detachPackage <- function(pkg_name, character.only = FALSE, force = FALSE) {
 

@@ -18,10 +18,10 @@ This function allows you unload packages quily by name (or as as string)
 Source: http://stackoverflow.com/questions/6979917/how-to-unload-a-package-without-restarting-r
 }
 \examples{
-install.packages("ggplot2")
-library(ggplot2)
-unloadPackage(ggplot2)
-library(ggplot2)
-unloadPackage("ggplot2")
+#install.packages("ggplot2")
+#library(ggplot2)
+#unloadPackage(ggplot2)
+#library(ggplot2)
+#unloadPackage("ggplot2")
 }
 
