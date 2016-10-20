@@ -2,7 +2,7 @@
 % Please edit documentation in R/detachPackage.R
 \name{detachPackage}
 \alias{detachPackage}
-\title{UnloadPackage}
+\title{detachPackage}
 \usage{
 detachPackage(pkg_name, character.only = FALSE, force = FALSE)
 }
@@ -24,4 +24,5 @@ Source: http://stackoverflow.com/questions/6979917/how-to-unload-a-package-witho
 #library(ggplot2)
 #unloadPackage("ggplot2")
 }
+\keyword{detachPackage}
 

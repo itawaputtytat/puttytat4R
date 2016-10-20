@@ -1,10 +1,11 @@
-#' @title UnloadPackage
+#' @title detachPackage
 #'
 #' @description This function allows you unload packages quily by name (or as as string)
 #' Source: http://stackoverflow.com/questions/6979917/how-to-unload-a-package-without-restarting-r
 #' @param pkg_name Package name as object name or character
 #' @param character.only logical. default = FALSE (function will deparse object name to character)
 #' @param force logical. default = FALSE. If set to TRUE package will be detached even though other attached packages depend on it
+#' @keywords detachPackage
 #' @examples
 #' #install.packages("ggplot2")
 #' #library(ggplot2)
