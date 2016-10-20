@@ -12,6 +12,7 @@
 #' #unloadPackage(ggplot2)
 #' #library(ggplot2)
 #' #unloadPackage("ggplot2")
+#' @export
 
 detachPackage <- function(pkg_name, character.only = FALSE, force = FALSE) {
 
@@ -29,6 +30,6 @@ detachPackage <- function(pkg_name, character.only = FALSE, force = FALSE) {
            unload = TRUE,
            character.only = TRUE,
            force = force)
-    cat("\n Package:", search_pkg, "detached \n\n")
+    cat("\n Package:", pkgname, "detached \n\n")
   }
 }

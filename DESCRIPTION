@@ -2,8 +2,8 @@ Package: puttytat4R
 Type: Package
 Title: Collection of useful "helper"-functions
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: Matthias Graichen <matthias.graichen@unibw.de>
+Author: itawaputtytat
+Maintainer: itawaputtytat <itawaputtytat@none.com>
 Description: Package contains a collection of useful "helper"-functions.
 License: GPL (>= 2)
 Encoding: UTF-8
