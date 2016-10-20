@@ -30,6 +30,6 @@ detachPackage <- function(pkg_name, character.only = FALSE, force = FALSE) {
            unload = TRUE,
            character.only = TRUE,
            force = force)
-    cat("\n Package:", pkgname, "detached \n\n")
+    cat("\n Package:", pkg_name, "detached \n\n")
   }
 }
