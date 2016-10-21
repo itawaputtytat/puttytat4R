@@ -1,0 +1,47 @@
+NAME:  A Dataset That Is 44% Outliers
+TYPE:  Census
+SIZE:  43 observations, one variable with case labels
+
+DESCRIPTIVE ABSTRACT:
+
+The data consist of the numbers of days served in office for the 43 
+Presidents of the United States as of 4 February 2004. 
+
+SOURCE:
+
+The data were extracted from tables in the 2001 _World Almanac_ .
+
+VARIABLE DESCRIPTIONS:
+
+Columns   Variables
+
+1-14      Last name of President (text, spelled with no embedded
+          spaces)
+15-18     days in office (counts)
+
+Values are separated by (a variable number of) blanks. There are no
+missing values.
+
+STORY BEHIND THE DATA:
+
+The data were gathered to illustrate kinds of outliers. The main pattern 
+in the data is that the majority of presidents served either one or two 
+full terms. However, about 44% of the observations deviate from this pattern, 
+and could be considered outliers.
+
+PEDAGOGICAL NOTES:
+
+The data illustrate outliers that are not mistakes and not observations 
+that are unusually high or low. The reasons for them are all interesting 
+historically. They illustrate that "outliers" need not be errors but may 
+instead be particularly interesting cases. The data also illustrate that 
+different data displays may differ in their ability to reveal interesting 
+data structure. 
+
+SUBMITTED BY:
+
+Robert W. Hayden
+82 River Street
+Ashland, NH 03217 
+USA
+hayden@mail.plymouth.edu
