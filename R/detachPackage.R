@@ -1,5 +1,4 @@
 #' @title detachPackage
-#'
 #' @description This function allows you unload packages quily by name (or as as string)
 #' Source: http://stackoverflow.com/questions/6979917/how-to-unload-a-package-without-restarting-r
 #' @param pkg_name Package name as object name or character
@@ -24,12 +23,14 @@ detachPackage <- function(pkg_name, character.only = FALSE, force = FALSE) {
   ## Create string for detach function
   search_pkg <- paste("package", pkg_name, sep = ":")
 
-    ## Check if package is in search path for R objects
+  ## Check if package is in search path for R objects
+  if (!search_pkg %in% search())
+    outputWSepLine( paste("Package is not attached:", pkg_name) )
   while(search_pkg %in% search()) {
     detach(search_pkg,
            unload = TRUE,
            character.only = TRUE,
            force = force)
-    cat("\n Package:", pkg_name, "detached \n\n")
+    outputWSepLine( paste("Package detached:", pkg_name) )
   }
 }
