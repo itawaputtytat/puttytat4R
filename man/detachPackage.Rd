@@ -4,10 +4,10 @@
 \alias{detachPackage}
 \title{detachPackage}
 \usage{
-detachPackage(pkg_name, character.only = FALSE, force = FALSE)
+detachPackage(name4pkg, character.only = FALSE, force = FALSE)
 }
 \arguments{
-\item{pkg_name}{Package name as object name or character}
+\item{name4pkg}{Package name as object name or character}
 
 \item{character.only}{logical. default = FALSE (function will deparse object name to character)}
 

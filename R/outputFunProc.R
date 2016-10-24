@@ -1,14 +1,14 @@
 #' @title Print currently used function name and type
 #' @description Print currently used function name and type
 #' @param proctype Single character for identifying process type: "I" for "Initialising", "R" for "Running", and "D" for "Done". No default. "I" and "D" can be used with any (arbitrary) function name without constrictions. "R" depends on active and parent calls.
-#' @param funname String for function name. If no function name is given, printFunProc will deparse function name from active call (as printFunProc can be run inside another function).
+#' @param funname String for function name. If no function name is given, outputFunProc will deparse function name from active call (as outputFunProc can be run inside another function).
 #' @export
 
-printFunProc <- function(proctype, funname = "") {
+outputFunProc <- function(proctype, funname = "") {
 
-  ## Print function process only if puttytat4R.env$printFunProc is TRUE
+  ## Print function process only if puttytat4R.env$outputFunProc is TRUE
   ## ... otherwise leave without error message
-  if (!puttytat4R_env$printFunProc_status) {
+  if (!puttytat4R_env$outputFunProc_status) {
     opt <- options(show.error.messages = FALSE)
     on.exit(options(opt))
   } else {
@@ -52,7 +52,7 @@ printFunProc <- function(proctype, funname = "") {
         txt4output <- c(txt4output, txt4call)
       }
 
-      outputWSepLine(txt4output)
+      messageWSepLine(txt4output)
   }
 }
 

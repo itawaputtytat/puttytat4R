@@ -3,7 +3,7 @@
 \docType{data}
 \name{puttytat4R_env}
 \alias{puttytat4R_env}
-\title{Test functions for printFunProc}
+\title{Test functions for outputFunProc}
 \format{An object of class \code{environment} of length 1.}
 \usage{
 puttytat4R_env

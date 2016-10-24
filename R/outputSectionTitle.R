@@ -1,7 +1,7 @@
 #' @title Output section title
 #' @export
 
-printSectionTitle <- function(text) {
+outputSectionTitle <- function(text) {
 
   ## Compute number of character
   outputlength <- nchar(text)

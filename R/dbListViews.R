@@ -2,7 +2,7 @@
 
 dbListViews <- function(con, ...) {
 
-  printFunProc(R)
+  outputFunProc(R)
 
   out <- dbGetQuery(con, "select viewname
                           from pg_views

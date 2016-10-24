@@ -6,7 +6,7 @@ codeOutliersZ <- function(dat,
                           returnZValues = FALSE,
                           digits = 2) {
 
-  printFunProc(R)
+  outputFunProc(R)
 
   ## Compute SD (sample version n = n [not n-1])
   stdev <-

@@ -4,14 +4,14 @@
 #' @param position Vector of character values. Position of separating lines ("top", "bottom")
 #' @param sepchar Character value for separating line
 #' @export
-
 outputWSepLine <- function(output_txt,
+                           type = "message",
                            pos = c("top", "bottom"),
                            sepchar = "-",
                            returnchar = F) {
 
   ## Get maximum number of characters as length for separating line
-  output_length <- max( sapply(output_txt, nchar) )
+  output_length <- max(sapply(output_txt, nchar))
 
   ## Create separating line and final output
   sepline <- paste(rep(sepchar, output_length), collapse = "")
@@ -29,7 +29,21 @@ outputWSepLine <- function(output_txt,
     paste(sepline, paste(output_txt, collapse = "\n"), sepline, sep = "\n")
 
   if (returnchar)
-    return(output_final) else
-    message(output_final)
+    return(output_final) else {
+      if (type == "message") message(output_final)
+      if (type == "cat") cat(output_final)
 
+    }
+
+
+}
+
+#' @export
+messageWSepLine <- function(output_txt) {
+  outputWSepLine(output_txt, type = "message")
+}
+
+#' @export
+catWSepLine <- function(output_txt) {
+  outputWSepLine(output_txt, type = "cat")
 }

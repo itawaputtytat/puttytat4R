@@ -4,7 +4,7 @@
 
 dbConn <- function(settings, name4dbconn = "dbconn") {
 
-  printFunProc(R)
+  outputFunProc(R)
 
   ## Check for existing connection
   if (exists("dbconn")) {

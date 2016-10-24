@@ -4,8 +4,8 @@
 \alias{outputWSepLine}
 \title{Print text with enclosing separating lines}
 \usage{
-outputWSepLine(output_txt, pos = c("top", "bottom"), sepchar = "-",
-  returnchar = F)
+outputWSepLine(output_txt, type = "message", pos = c("top", "bottom"),
+  sepchar = "-", returnchar = F)
 }
 \arguments{
 \item{output_txt}{Vector of character values}

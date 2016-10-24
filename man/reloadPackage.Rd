@@ -4,12 +4,12 @@
 \alias{reloadPackage}
 \title{Print currently used function name and type}
 \usage{
-reloadPackage(pkg_name, character.only = FALSE)
+reloadPackage(name4pkg, character.only = FALSE)
 }
 \arguments{
-\item{pkg_name}{Package name as object name or character}
-
 \item{character.only}{logical. default = FALSE (function will deparse object name to character)}
+
+\item{pkg_name}{Package name as object name or character}
 }
 \description{
 Print currently used function name and type

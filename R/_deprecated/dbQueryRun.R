@@ -2,7 +2,7 @@
 
 dbQueryRun <- function(dfname4save, string4query) {
 
-  printFunProc(R)
+  outputFunProc(R)
 
   ## Get data
   dbWorkaround_UTF8()

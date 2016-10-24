@@ -2,7 +2,7 @@
 
 dbDeleteSrc <- function(name4src) {
 
-  printFunProc(R)
+  outputFunProc(R)
 
   ## Check if source is table or view
   dbviews <- dbListViews(dbconn)
