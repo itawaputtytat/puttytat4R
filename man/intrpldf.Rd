@@ -4,7 +4,7 @@
 \alias{intrpldf}
 \title{Interpolate complete data.frame}
 \usage{
-intrpldf(dat, colname4ref, template_min = NULL, template_max = NULL,
-  template_stepsize = 1, colnames2excl, showLog = F)
+intrpldf(dat, colname4ref, min = NULL, max = NULL, stepsize = 1,
+  colnames2excl, showLog = F)
 }
 

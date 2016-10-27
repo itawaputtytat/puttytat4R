@@ -4,7 +4,7 @@
 \alias{outputFunProc}
 \title{Print currently used function name and type}
 \usage{
-outputFunProc(proctype, funname = "")
+outputFunProc(proctype, funname = "", calling = T)
 }
 \arguments{
 \item{proctype}{Single character for identifying process type: "I" for "Initialising", "R" for "Running", and "D" for "Done". No default. "I" and "D" can be used with any (arbitrary) function name without constrictions. "R" depends on active and parent calls.}

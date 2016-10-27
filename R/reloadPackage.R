@@ -15,5 +15,5 @@ reloadPackage <- function(name4pkg,
 
   ## Re-attach package
   library(name4pkg, character.only = T)
-  outputWSepLine(paste("Package attached:", name4pkg))
+  messageWSepLine(paste("Attached package:", name4pkg))
 }

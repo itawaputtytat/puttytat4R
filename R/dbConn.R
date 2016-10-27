@@ -21,15 +21,15 @@ dbConn <- function(settings, name4dbconn = "dbconn") {
 
   if (!is.null(settings)) {
     assign(name4dbconn,
-           dbConnect(settings$drv,
-                     host     = settings$host,
-                     port     = settings$port,
-                     dbname   = settings$name,
-                     user     = settings$user,
-                     password = settings$pwd),
+           dbConnect(set4db$drv,
+                     host     = set4db$host,
+                     port     = set4db$port,
+                     dbname   = set4db$name,
+                     user     = set4db$user,
+                     password = set4db$pwd),
            envir = .GlobalEnv)
 
-    cat("Connected to database:", "\n")
-    cat(">", settings$name)
+    outputString(paste("* Connected to database:", set4db$name))
+    outputString(paste("** See object:", name4dbconn))
   }
 }

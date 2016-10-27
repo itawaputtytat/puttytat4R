@@ -33,15 +33,16 @@ level3 <- function(x3) {
   cat("Level 3: Objects in parent 2 are: \n")
   print(ls(envir = sys.frame(-2))) ## Print objects in level above
   #print(ls(envir = parent.frame(n = 2))) ## Print objects in level above
-  cat("Level 3: Objects in parent 3 are: \n")
-  print(ls(envir = sys.frame(-3))) ## Print objects in level above
-  cat("Level 3: Print name of argument: \n")
-  dat2proc_name <- ls(envir = sys.frame(-2))[1]
-  print(dat2proc_name)
-  cat("Level 3: Print content of argument: \n")
-  #arg_content <- get(dat2proc_name, envir = sys.frame(-2))
-  arg_content <- eval( parse("deparse(substitute(", ls(envir = sys.frame(-2))[1], "))"), envir = sys.frame(-2) )
-  print(arg_content)
+  # NOT THAT MANY FRAMES ON THE STACK
+  # cat("Level 3: Objects in parent 3 are: \n")
+  # print(ls(envir = sys.frame(-3))) ## Print objects in level above
+  # cat("Level 3: Print name of argument: \n")
+  # dat2proc_name <- ls(envir = sys.frame(-2))[1]
+  # print(dat2proc_name)
+  # cat("Level 3: Print content of argument: \n")
+  # #arg_content <- get(dat2proc_name, envir = sys.frame(-2))
+  # arg_content <- eval( parse("deparse(substitute(", ls(envir = sys.frame(-2))[1], "))"), envir = sys.frame(-2) )
+  # print(arg_content)
   # arg <-
   # arg_exists <- exists(arg, .GlobalEnv)
   # cat("Level 3: Does object exist? \n")

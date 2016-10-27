@@ -1,8 +1,18 @@
-#'@export
+#' @title Output "Done!"
+#' @description Outputs "Done!" as c
+#' @param
+#' @export
+#'
 
-outputDone <- function()
-  #cat("Done!", "\n\n", sep = "")
-  messageWSepLine(("Done!"))
+outputDone <- function(step = F) {
+  if(step) {
+    outputString("Done!")
+    } else {
+      if (puttytat4R_env$outputFunProc_status)
+        messageWSepLine("Done!", seplinechar = "=")
+    }
+}
+
 
 
 

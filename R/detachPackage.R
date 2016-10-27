@@ -25,12 +25,12 @@ detachPackage <- function(name4pkg,
 
   ## Check if package is in search path for R objects
   if (!search_pkg %in% search())
-    outputWSepLine(paste("Package is not attached:", name4pkg))
+    outputString(paste("Package is not attached:", name4pkg))
   while(search_pkg %in% search()) {
     detach(search_pkg,
            unload = TRUE,
            character.only = TRUE,
            force = force)
-    outputWSepLine(paste("Package detached:", name4pkg))
+    messageWSepLine(paste("Detached package:", name4pkg))
   }
 }

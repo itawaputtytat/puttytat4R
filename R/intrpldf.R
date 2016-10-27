@@ -3,25 +3,28 @@
 
 intrpldf <- function(dat,
                      colname4ref,
-                     template_min = NULL,
-                     template_max = NULL,
-                     template_stepsize = 1,
+                     min = NULL,
+                     max = NULL,
+                     stepsize = 1,
                      colnames2excl,
                      showLog = F) {
 
+  outputFunProc(R)
+
   ## Create template
-  if (is.null(template_min))
-    template_min <- min(dat[, colname4ref], na.rm = T)
-  if (is.null(template_max))
-    template_max <- max(dat[, colname4ref], na.rm = T)
-  template <- seq(template_min, template_max, template_stepsize)
+  if (is.null(min))
+    min <- min(dat[, colname4ref], na.rm = T)
+  if (is.null(max))
+    max <- max(dat[, colname4ref], na.rm = T)
+  template <- seq(min, max, stepsize)
   template <- data.frame(template)
   colnames(template) <- colname4ref
 
   ## Merge template and data
+  ## For correct merging values have to be converted into character
   dat[, colname4ref] <- as.character(dat[, colname4ref])
   template[, colname4ref] <- as.character(template[, colname4ref])
-  dat <- left_join(template, dat)
+  dat <- dplyr::left_join(template, dat)
   dat[, colname4ref] <- as.numeric(dat[, colname4ref])
   col_n <- ncol(dat)
 
@@ -37,10 +40,10 @@ intrpldf <- function(dat,
   dat <- lapply(dat, function(currentcol) {
     ## In case of numeric values call function for numeric interpolation
     if(is.numeric(currentcol))
-      newvals <- intrplNum(currentcol, rows_w_dat) else
-      #newvals <- na.approx(currentcol, na.rm = F) else
+      #newvals <- intrplNum(currentcol, rows_w_dat) else
+      newvals <- zoo::na.approx(currentcol, na.rm = F) else
         ## Convert to character as workaround
-        newvals <- as.character(na.locf(currentcol))
+        newvals <- as.character(zoo::na.locf(currentcol))
   } )
   dat <- as.data.frame(dat)
 
@@ -56,6 +59,7 @@ intrpldf <- function(dat,
     cat("* Row numbers after: ", length(rows_w_dat) + length(rows_na), "\n")
   }
 
+  outputDone()
   return(dat)
 }
 

@@ -1,6 +1,5 @@
 #' @title Interpolate numeric values
 #' @export
-
 intrplNum <- function(values, rows_w_dat) {
   outputFunProc(R)
   ## Remeber number of decimal places

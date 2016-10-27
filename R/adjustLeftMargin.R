@@ -6,25 +6,17 @@
 #' @param plotdat ggplot2 object
 #' @param nchar4ylabels integer. Number of "A" character y values. Will result in changing width for left margin.
 #' @export
-adjustLeftMargin <- function (plotdat, nchar4ylabels = 10) {
+adjustLeftMargin <- function (plotdat, chars_n = 10) {
 
-  #require(gridExtra)
+  outputFunProc(R)
 
-  ## Create dummy data
-  dummydat <-
-    data.frame(xval = 0,
-               yval = paste(rep("A", nchar4ylabels), collapse = ""))
+  ## Create dummy data and plot
+  dummydat <- data.frame(x = 0, y = paste(rep("A", chars_n), collapse = ""))
+  plotdat_dummy <- ggplot(dummydat, aes(x = x, y = y)) + geom_point()
 
-  ## Create dummy plot
-  plotdat_dummy <-
-    ggplot(dummydat, aes(x = xval, y = yval)) +
-    geom_point()
-
-  ## Access grobs
+  ## Access grobs change width of target plot
   plotdat_dummy <- ggplot_gtable(ggplot_build(plotdat_dummy))
   plotdat <- ggplot_gtable(ggplot_build(plotdat))
-
-  ## Change width of target plot
   plotdat$widths[2:3] <- plotdat_dummy$widths[2:3]
 
   return(plotdat)

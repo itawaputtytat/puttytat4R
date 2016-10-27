@@ -3,4 +3,5 @@
 writeLines("install.packages('devtools', repos = 'https://cran.rstudio.com/')", "inst.R")
 writeLines("install.packages('roxygen2', repos = 'https://cran.rstudio.com/')", "inst.R")
 writeLines("install.packages('testthat', repos = 'https://cran.rstudio.com/')", "inst.R")
+writeLines("install.packages(c('dplyr', 'zoo') , repos = 'https://cran.rstudio.com/')", "inst.R")
 system("Rscript --vanilla inst.R")

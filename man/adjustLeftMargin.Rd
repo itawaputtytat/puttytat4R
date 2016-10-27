@@ -4,7 +4,7 @@
 \alias{adjustLeftMargin}
 \title{Adjust left margin of ggplot2 object to specific margin}
 \usage{
-adjustLeftMargin(plotdat, nchar4ylabels = 10)
+adjustLeftMargin(plotdat, chars_n = 10)
 }
 \arguments{
 \item{plotdat}{ggplot2 object}

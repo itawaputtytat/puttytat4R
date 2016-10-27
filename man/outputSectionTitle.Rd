@@ -4,6 +4,6 @@
 \alias{outputSectionTitle}
 \title{Output section title}
 \usage{
-outputSectionTitle(text)
+outputSectionTitle(text, char4aes = "*", seplinechar = "=", ...)
 }
 
