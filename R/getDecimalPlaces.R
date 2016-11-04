@@ -12,6 +12,9 @@ getDecimalPlaces <- function(values,
   options_backup <- options()
   options("scipen" = 100)
 
+  ## Remove NA values
+  values <- values[which(!is.na(values))]
+
   decplaces <- sapply(values, function(x) {
     ## Only if there is a rest when dividing
     if ((x %% 1) != 0) {

@@ -3,4 +3,4 @@ testi <-
              col2 = c("a", NA, NA , "b", "b", "c", "c", NA, 'd'),
              col3 = c(1, NA, NA, 5, 8, 9, 12, NA, 15))
 
-intrpldf(testi, template_min = -2, template_max = 3, template_stepsize = 1, "col1", showLog = T)
+intrpldf(testi, min = -2, max = 3, stepsize = 1, "col1", showLog = T)

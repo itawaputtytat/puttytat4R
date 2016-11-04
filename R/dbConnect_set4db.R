@@ -2,7 +2,7 @@
 #' @description Connect to PostgreSQL database
 #' @export
 
-dbConn <- function(settings, name4dbconn = "dbconn") {
+dbConnect_set4db <- function(settings, name4dbconn = "dbconn") {
 
   outputFunProc(R)
 

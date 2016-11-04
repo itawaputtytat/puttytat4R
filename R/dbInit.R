@@ -24,7 +24,7 @@ dbInit <- function() {
         "set4db$select <- c(1, 2)",
         sep = "\n")
     ## Create directy
-    dir.create(file.path("settings"), showWarnings = FALSE)
+    dir.create(file.path("settings"), showWarnings = F)
     ## Write template to directory
     writeLines(string4settings, "settings/set4db.R")
     outputString(paste("* Created template for database settings in", filepath))

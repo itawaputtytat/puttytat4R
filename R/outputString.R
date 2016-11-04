@@ -24,7 +24,7 @@ outputString <- function(string,
       output <- paste(paste(string, collapse = "\n"), sepline, sep = "\n")
     if (sum(seplinepos %in% c("t", "T", "b", "B")) == 2)
       output <- paste(sepline, paste(string, collapse = "\n"), sepline, sep = "\n")
-    output <- paste("\n", output, "\n", sep = "")
+    output <- paste(output, sep = "")
   } else {
     output <- paste(string, collapse = "\n")
   }

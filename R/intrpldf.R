@@ -22,9 +22,12 @@ intrpldf <- function(dat,
 
   ## Merge template and data
   ## For correct merging values have to be converted into character
+  ## Also round values as workaround for correct merging
+  dat[, colname4ref] <- round(dat[, colname4ref], getDecimalPlaces(stepsize))
   dat[, colname4ref] <- as.character(dat[, colname4ref])
+  template <- round(template, getDecimalPlaces(stepsize))
   template[, colname4ref] <- as.character(template[, colname4ref])
-  dat <- dplyr::left_join(template, dat)
+  dat <- dplyr::left_join(template, dat, by = colname4ref)
   dat[, colname4ref] <- as.numeric(dat[, colname4ref])
   col_n <- ncol(dat)
 
@@ -39,13 +42,15 @@ intrpldf <- function(dat,
   ## Evaluate each column
   dat <- lapply(dat, function(currentcol) {
     ## In case of numeric values call function for numeric interpolation
-    if(is.numeric(currentcol))
+    if(is.numeric(currentcol)) { ## .. but remember how many decimal places the value had before
       #newvals <- intrplNum(currentcol, rows_w_dat) else
-      newvals <- zoo::na.approx(currentcol, na.rm = F) else
+      newvals <- zoo::na.approx(currentcol, na.rm = F)
+      } else {
         ## Convert to character as workaround
         newvals <- as.character(zoo::na.locf(currentcol))
-  } )
-  dat <- as.data.frame(dat)
+        }
+    } )
+  dat <- as.data.frame(dat, stringsAsFactors = F)
 
   ## LOG
   ## Interpolation necessary?

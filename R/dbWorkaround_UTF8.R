@@ -1,7 +1,7 @@
 #' @export
 
-dbWorkaround_UTF8 <- function(dbconn) {
+dbWorkaround_UTF8 <- function(name4dbconn) {
   outputFunProc(R)
-  postgresqlpqExec(dbconn, "SET client_encoding = 'windows-1252'")
+  postgresqlpqExec(get(name4dbconn), "SET client_encoding = 'windows-1252'")
 }
 

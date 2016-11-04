@@ -1,5 +1,5 @@
 #' @export
-dbGetSrc <- function(dbconn, name4src) {
+dbGetSrc <- function(name4dbconn, name4src) {
 
   outputFunProc(R)
 
@@ -8,11 +8,11 @@ dbGetSrc <- function(dbconn, name4src) {
   txt4query <- paste("SELECT * FROM ", name4src, sep = "")
 
   ## Get data with workaround for UTF-8
-  dbWorkaround_UTF8(dbconn)
-  dat <- dbGetQuery(dbconn, txt4query, encoding = "UTF-8")
+  dbWorkaround_UTF8(name4dbconn)
+  dat <- dbGetQuery(get(name4dbconn), txt4query, encoding = "UTF-8")
 
   ## Output
-  cat("* Query data from source: ", name4src, "\n", sep = "")
+  outputString(paste("* Query data from source:", name4src))
 
   outputDone()
   return(dat)
