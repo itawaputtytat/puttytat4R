@@ -1,3 +1,4 @@
+#' @title Flag outlier above z = 1.96
 #' @export
 
 codeOutliersZ <- function(dat,

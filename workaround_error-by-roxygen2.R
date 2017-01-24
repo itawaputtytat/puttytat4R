@@ -5,3 +5,7 @@ writeLines("install.packages('roxygen2', repos = 'https://cran.rstudio.com/')", 
 writeLines("install.packages('testthat', repos = 'https://cran.rstudio.com/')", "inst.R")
 writeLines("install.packages(c('dplyr', 'zoo') , repos = 'https://cran.rstudio.com/')", "inst.R")
 system("Rscript --vanilla inst.R")
+
+
+## New error on 2017-01-24
+install.packages("roxygen2", lib = .Library) # ... and then use personal library: Yes
