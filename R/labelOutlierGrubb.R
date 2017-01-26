@@ -44,3 +44,6 @@ codeOutlierGrubb <- function(dat) {
   }
   return(data.frame( data = dat, outlier = dat %in% outliers) )
 }
+
+
+labelOutlierGrubb <- codeOutlierGrubb

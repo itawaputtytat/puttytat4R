@@ -34,3 +34,7 @@ codeOutliersZ <- function(dat,
   }
 
 }
+
+
+#' @export
+labelOutlierZ <- codeOutliersZ
