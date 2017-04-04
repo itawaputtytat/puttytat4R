@@ -43,3 +43,7 @@ messageWSepLine <- function(string, ...)
 #' @export
 catWSepLine <- function(string, ...)
   outputString(string, type = "cat", sepline = T, ...)
+
+#' @export
+outputWSepLine <- function(string, ...)
+  outputString(string, type = "cat", sepline = T, ...)
