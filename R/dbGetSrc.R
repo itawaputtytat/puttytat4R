@@ -1,3 +1,7 @@
+#' @title Query complete database source
+#' @description Sources my be tables or views
+#' @param dbconn A DBIConnection object, as produced by dbConnect or character of the object name
+#' @param name4src Name of database source as character
 #' @export
 dbGetSrc <- function(dbconn, name4src) {
 
