@@ -1,4 +1,5 @@
 # puttytat4R
+<<<<<<< HEAD
 
 A collection of diverse functions for:
 * Adjust visualizations
@@ -12,3 +13,6 @@ A collection of diverse functions for:
 * Find objects in environments by name
 * Compute scores of questionnares scales
 * Grouping cluster algorithms (hierachical, kmeans, kmeanspp)
+=======
+Collection of useful "helper" functions
+>>>>>>> origin/master
