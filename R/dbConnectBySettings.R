@@ -2,13 +2,15 @@
 #' @description Connect to PostgreSQL database
 #' @export
 
-dbConnect_set4db <- function(settings, name4dbconn = "dbconn") {
+dbConnectBySettings <- function(settings, dbconn_name = "dbconn") {
 
   outputFunProc(R)
 
+  dbconn_name <- paste0("dbconn_", dbconn_name)
+
   ## Check for existing connection
-  if (exists("dbconn")) {
-    dbDisconnect(dbconn)
+  if (exists(dbconn_name)) {
+    dbDisconnect(get(dbconn_name))
     cat("Disconnected from database \n")
     cat("* Reason: Connection already existed \n")
   }
@@ -17,10 +19,8 @@ dbConnect_set4db <- function(settings, name4dbconn = "dbconn") {
   if (is.null(settings))
     cat("No database settings configured!")
 
-  name4dbconn <- paste0("dbconn_", name4dbconn)
-
   if (!is.null(settings)) {
-    assign(name4dbconn,
+    assign(dbconn_name,
            dbConnect(settings$drv,
                      host     = settings$host,
                      port     = settings$port,
@@ -30,6 +30,6 @@ dbConnect_set4db <- function(settings, name4dbconn = "dbconn") {
            envir = .GlobalEnv)
 
     outputString(paste("* Connected to database:", settings$name))
-    outputString(paste("** See object:", name4dbconn))
+    outputString(paste("** Refer to object:", dbconn_name))
   }
 }

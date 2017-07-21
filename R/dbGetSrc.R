@@ -18,7 +18,7 @@ dbGetSrc <- function(dbconn, name4src) {
   dat <- dbGetQuery(get(dbconn), txt4query, encoding = "UTF-8")
 
   ## Output
-  outputString(paste("* Query data from source:", name4src))
+  outputString(paste("* Queried data from source:", name4src))
 
   outputDone()
   return(dat)
