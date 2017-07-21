@@ -4,15 +4,19 @@
 \alias{outputString}
 \title{Print text with enclosing separating lines}
 \usage{
-outputString(string, type = "cat", sepline = F, seplinepos = c("T", "B"),
-  seplinechar = "-", returnchar = F)
+outputString(string, type = "cat", output_sepline = F, sepline_pos = NULL,
+  sepline_char = "-", return_char = F)
 }
 \arguments{
 \item{string}{Vector of character values}
 
-\item{position}{Vector of character values. Position of separating lines ("top", "bottom")}
+\item{output_sepline}{Boolean value for printing sepline. Default: False}
 
-\item{sepchar}{Character value for separating line}
+\item{sepline_pos}{Vector of character values. Position of separating lines ("top", "t", "T", "bottom", "b", "B"). Default: NULL, Default when output_sepline = True: c("T", "B")}
+
+\item{sepline_char}{Character value for separating line. Default: "-"}
+
+\item{return_char}{Return output as string without printing the output. Default = False}
 }
 \description{
 Print multiple character values with enclosing separating lines
