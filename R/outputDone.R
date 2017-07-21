@@ -9,7 +9,7 @@ outputDone <- function(step = F) {
     outputString("Done!")
     } else {
       if (puttytat4R_env$outputFunProc_status)
-        messageWSepLine("Done!", seplinechar = "=")
+        messageWithSepLine("Done!", sepline_char = "=")
     }
 }
 

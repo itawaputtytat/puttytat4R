@@ -3,11 +3,8 @@
 
 outputSectionTitle <- function(text,
                                char_aes = "*",
-                               char_sepline = "=",
+                               sepline_char = "=",
                                ...) {
-
-  ## Compute number of character
-  outputlength <- nchar(text)
 
   ## Create string for text
   aes <- paste(rep(char_aes, 3), collapse = "")
@@ -16,5 +13,5 @@ outputSectionTitle <- function(text,
   length_title_part1_length <- nchar(title_part1)
   title <- paste(title_part1, text, title_part2)
 
-  catWSepLine(title, char_sepline = char_sepline, ...)
+  catWithSepLine(title, sepline_char = sepline_char, ...)
 }

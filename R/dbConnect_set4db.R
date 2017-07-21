@@ -17,19 +17,19 @@ dbConnect_set4db <- function(settings, name4dbconn = "dbconn") {
   if (is.null(settings))
     cat("No database settings configured!")
 
-  name4dbconn <- paste("dbconn", name4dbconn, sep = "_")
+  name4dbconn <- paste0("dbconn_", name4dbconn)
 
   if (!is.null(settings)) {
     assign(name4dbconn,
-           dbConnect(set4db$drv,
-                     host     = set4db$host,
-                     port     = set4db$port,
-                     dbname   = set4db$name,
-                     user     = set4db$user,
-                     password = set4db$pwd),
+           dbConnect(settings$drv,
+                     host     = settings$host,
+                     port     = settings$port,
+                     dbname   = settings$name,
+                     user     = settings$user,
+                     password = settings$pwd),
            envir = .GlobalEnv)
 
-    outputString(paste("* Connected to database:", set4db$name))
+    outputString(paste("* Connected to database:", settings$name))
     outputString(paste("** See object:", name4dbconn))
   }
 }

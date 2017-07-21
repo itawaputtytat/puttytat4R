@@ -52,7 +52,7 @@ outputFunProc <- function(proctype, funname = "", calling = T) {
           txt4output <- c(txt4output, txt4call)
         }
     } ## Calling
-    messageWSepLine(txt4output, seplinechar = "=")
+    messageWithSepLine(txt4output, sepline_char = "=")
 
   } else {
     opt <- options(show.error.messages = FALSE)

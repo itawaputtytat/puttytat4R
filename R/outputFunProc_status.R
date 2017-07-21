@@ -6,10 +6,10 @@
   if (status) {
     puttytat4R_env$outputFunProc_status <- T
     if(print)
-      messageWSepLine("outputFunProc active", seplinechar = "=")
+      messageWithSepLine("outputFunProc active", sepline_char = "=")
   } else {
     puttytat4R_env$outputFunProc_status <- F
     if(print)
-      messageWSepLine("outputFunProc inactive", seplinechar = "=")
+      messageWithSepLine("outputFunProc inactive", sepline_char = "=")
   }
 }

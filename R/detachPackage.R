@@ -13,12 +13,13 @@
 #' #unloadPackage("ggplot2")
 #' @export
 
-detachPackage <- function(name4pkg,
+detachPackage <- function(name4pkg = "puttytat4R",
                           character.only = FALSE,
                           force = FALSE) {
 
-  ## In case name4pkg is no string
-  if (!character.only) name4pkg <- deparse(substitute(name4pkg))
+    ## In case name4pkg is no string
+  if (name4pkg != "puttytat4R" & !character.only)
+    name4pkg <- deparse(substitute(name4pkg))
 
   ## Create string for detach function
   search_pkg <- paste("package", name4pkg, sep = ":")
@@ -31,6 +32,6 @@ detachPackage <- function(name4pkg,
            unload = TRUE,
            character.only = TRUE,
            force = force)
-    messageWSepLine(paste("Detached package:", name4pkg))
+    messageWithSepLine(paste("Detached package:", name4pkg))
   }
 }

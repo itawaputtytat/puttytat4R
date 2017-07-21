@@ -1,14 +1,16 @@
 #' @title Initialise PostgreSQL settings
 #' @description Create tempate for database settings in directory "settings"
 #' @export
-dbInit <- function() {
+dbInitSettings<- function(dirname = "dbset", filename = "dbset.R") {
   outputFunProc(R)
-  filepath <- file.path("settings", "set4db.R")
+
   library(RPostgreSQL)
+
+  filepath <- file.path(dirname, paste(filename))
   if (file.exists(filepath)) {
     outputString(paste("* Database settings already exists in", filepath))
     outputString(paste("* Sourcing", filepath))
-    source("settings/set4db.R")
+    source(filepath)
   } else {
     ## Create string for settings
     string4settings <-
@@ -26,7 +28,7 @@ dbInit <- function() {
     ## Create directy
     dir.create(file.path("settings"), showWarnings = F)
     ## Write template to directory
-    writeLines(string4settings, "settings/set4db.R")
+    writeLines(string4settings, filepath)
     outputString(paste("* Created template for database settings in", filepath))
     outputString("* Please adjust settings")
   }

@@ -4,7 +4,8 @@
 \alias{detachPackage}
 \title{detachPackage}
 \usage{
-detachPackage(name4pkg, character.only = FALSE, force = FALSE)
+detachPackage(name4pkg = "puttytat4R", character.only = FALSE,
+  force = FALSE)
 }
 \arguments{
 \item{name4pkg}{Package name as object name or character}
