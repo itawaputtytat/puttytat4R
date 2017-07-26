@@ -4,7 +4,7 @@
 #' @param funname String for function name. If no function name is given, outputFunProc will deparse function name from active call (as outputFunProc can be run inside another function).
 #' @export
 
-outputFunProc <- function(proctype, funname = "", calling = T) {
+outputFunProc <- function(proctype, funname = "", othertxt = NA, calling = T) {
 
   ## Output only if puttytat4R.env$outputFunProc is TRUE
   ## Otherwise leave without error message
@@ -52,7 +52,13 @@ outputFunProc <- function(proctype, funname = "", calling = T) {
           txt4output <- c(txt4output, txt4call)
         }
     } ## Calling
-    messageWithSepLine(txt4output, sepline_char = "=")
+    if (!is.na(othertxt)) {
+      messageWithSepLine(c(txt4output,
+                           vapply(othertxt, function(x) paste("*", x), character(1))),
+                           sepline_char = "=")
+    } else {
+      messageWithSepLine(txt4output, sepline_char = "=")
+    }
 
   } else {
     opt <- options(show.error.messages = FALSE)
