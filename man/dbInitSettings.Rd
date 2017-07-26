@@ -4,7 +4,8 @@
 \alias{dbInitSettings}
 \title{Initialise PostgreSQL settings}
 \usage{
-dbInitSettings(dirname = "dbset", filename = "dbset.R")
+dbInitSettings(dirname = "dbset", filename = "dbset.R",
+  dnsdefault = "postgres")
 }
 \description{
 Create tempate for database settings in directory "settings"

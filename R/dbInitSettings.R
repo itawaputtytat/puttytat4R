@@ -1,7 +1,7 @@
 #' @title Initialise PostgreSQL settings
 #' @description Create tempate for database settings in directory "settings"
 #' @export
-dbInitSettings<- function(dirname = "dbset", filename = "dbset.R") {
+dbInitSettings<- function(dirname = "dbset", filename = "dbset.R", dnsdefault = "postgres") {
   outputFunProc(R)
 
   library(RPostgreSQL)
@@ -13,22 +13,20 @@ dbInitSettings<- function(dirname = "dbset", filename = "dbset.R") {
     source(filepath)
   } else {
     ## Create string for settings
-    string4settings <-
+    settings_string <-
       paste(
         "set4db <- c()",
-        "set4db$dns <- \"WRITE-DNS-HERE\"",
+        "set4db$dns <- ", dnsdefault,
         "set4db$host <- \"localhost\"",
         "set4db$port <- 5432",
-        "set4db$name <- set4db$dns",
         "set4db$user <- \"postgres\"",
         "set4db$pwd  <- \"WRITE-PASSWORD-HERE\"",
         "set4db$drv  <- dbDriver(\"PostgreSQL\")",
-        "set4db$select <- c(1, 2)",
         sep = "\n")
     ## Create directy
-    dir.create(file.path("settings"), showWarnings = F)
+    dir.create(file.path(dirname), showWarnings = F)
     ## Write template to directory
-    writeLines(string4settings, filepath)
+    writeLines(settings_string, filepath)
     outputString(paste("* Created template for database settings in", filepath))
     outputString("* Please adjust settings")
   }
