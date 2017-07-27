@@ -38,7 +38,7 @@ outputString <- function(string,
     ## Adjust length of separating line by console window width
     ## Create separating line
     output_length <- max(sapply(string, nchar))
-    console_width <- getOption("width")
+    console_width <- getOption("width") + 3
     output_length <- ifelse(output_length > console_width,
                             console_width,
                             output_length)

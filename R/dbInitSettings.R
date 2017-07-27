@@ -1,7 +1,7 @@
 #' @title Initialise PostgreSQL settings
 #' @description Create tempate for database settings in directory "settings"
 #' @export
-dbInitSettings<- function(dirname = "dbset", filename = "dbset.R", dnsdefault = "postgres") {
+dbInitSettings<- function(dirname = "db_set", filename = "db_set.R", dnsdefault = "postgres") {
   outputFunProc(R)
 
   library(RPostgreSQL)
