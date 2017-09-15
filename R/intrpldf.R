@@ -2,12 +2,15 @@
 #' @export
 
 intrpldf <- function(dat,
-                     colname4ref,
-                     min = NULL,
-                     max = NULL,
-                     stepsize = 1,
-                     colnames2excl,
-                     showLog = F) {
+                      colname4ref,
+                      min = NULL,
+                      max = NULL,
+                      stepsize = 1,
+                      colnames2excl = NULL,
+                      binary_vars = NULL,
+                      showLog = F,
+                      colname_intrpld = "intrpld",
+                      replace_preceding = T) {
 
   outputFunProc(R)
 
@@ -36,30 +39,59 @@ intrpldf <- function(dat,
   rows_w_dat_min <- min(rows_w_dat)
   rows_na <- which(is.na(dat[, 2]))
 
-  ## In case of no preceding values take actual first value
-  dat[1:( rows_w_dat_min - 1 ), 2:col_n] <- dat[rows_w_dat_min, 2:col_n]
+  colnames_backup <- colnames(dat)
+
+  ## Necessary to avoid shortage of reference columns
+  colnames2excl <- c(colnames2excl, colname4ref)
 
   ## Evaluate each column
-  dat <- lapply(dat, function(currentcol) {
+  dat_new <- lapply(colnames(dat), function(currentcol) {
+
     ## In case of numeric values call function for numeric interpolation
-    if(is.numeric(currentcol)) { ## .. but remember how many decimal places the value had before
-      #newvals <- intrplNum(currentcol, rows_w_dat) else
-      newvals <- zoo::na.approx(currentcol, na.rm = F)
+    if (!currentcol %in% colnames2excl) {
+
+      # In case of no preceding values take actual first value
+      if (replace_preceding) {
+        dat[1:( rows_w_dat_min - 1 ), currentcol] <- dat[rows_w_dat_min, currentcol]
+        ## THIS DOES NOT WORK
+        #dat[, currentcol] <- zoo::na.locf(dat[, currentcol], fromLast = T, na.rm = F)
+      }
+
+      ## In case of numeric values do linear interpolationg
+      if (is.numeric(dat[, currentcol]) & !currentcol %in% binary_vars) { ## .. but remember how many decimal places the value had before
+        newvals <- zoo::na.approx(dat[, currentcol], na.rm = F)
+
+        ## In case of non-numeric values: Carry on last observation
       } else {
         ## Convert to character as workaround
-        newvals <- as.character(zoo::na.locf(currentcol))
-        }
-    } )
-  dat <- as.data.frame(dat, stringsAsFactors = F)
+        #newvals <- as.character(zoo::na.locf(dat[, currentcol]))
+        newvals <- zoo::na.locf(dat[, currentcol], na.rm = F)
+      }
+
+      ## In case of columns that should not be interpolated
+      ## ... take over former values
+    } else {
+      newvals <- dat[, currentcol]
+    }
+  } )
+
+  dat_new <- data.frame(dat_new)
+  dat <- dat_new
+  #dat <- as.data.frame(dat, stringsAsFactors = F)
+  colnames(dat) <- colnames_backup
 
   ## LOG
   ## Interpolation necessary?
 
   ## Code interpolated values as T
-  dat$intrpl <- F
-  dat$intrpl[rows_na] <- T
+  dat$intrpld <- F
+  dat$intrpld[rows_na] <- T
 
-  if(showLog) {
+  ## In case of individual column name for interpolation indicator
+  colnames(dat)[ncol(dat)] <- colname_intrpld
+
+
+  if (showLog) {
     cat("* Row numbers before:", length(rows_w_dat), "\n")
     cat("* Row numbers after: ", length(rows_w_dat) + length(rows_na), "\n")
   }
@@ -67,5 +99,3 @@ intrpldf <- function(dat,
   outputDone()
   return(dat)
 }
-
-

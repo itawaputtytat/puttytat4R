@@ -15,7 +15,8 @@ outputFunProc <- function(proctype, funname = "", othertxt = NA, calling = T) {
 
     ## Get input arguments as string
     proctype <- deparse(substitute(proctype))
-    if (funname == "") funname <- calls[sys.nframe() - 1]
+    if (funname == "")
+      funname <- calls[sys.nframe() - 1]
 
     ## Create text for output
     if (proctype == "I") txt4proctype <- "Function initialised"
@@ -26,7 +27,7 @@ outputFunProc <- function(proctype, funname = "", othertxt = NA, calling = T) {
     ## Create output
     txt4output <- c(txt4proctype, funname)
 
-    if(calling) {
+    if (calling) {
 
       ## Check for type of code evaluation (source vs. run)
       if (sum( grepl("eval", calls) ) != 0)

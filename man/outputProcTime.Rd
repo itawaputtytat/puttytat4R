@@ -4,7 +4,7 @@
 \alias{outputProcTime}
 \title{Output processing time}
 \usage{
-outputProcTime(ptm)
+outputProcTime(ptm, keep_ptm = F)
 }
 \arguments{
 \item{ptm}{Must be initialised using proc.time()}

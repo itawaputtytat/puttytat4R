@@ -1,6 +1,7 @@
 #' @title Save currect script as script in log directory
 #' @description E.g. for using as backup of query settings
 #' @export
+
 writeSelfAsLog <- function(filename) {
   outputFunProc(R)
 
@@ -17,6 +18,8 @@ writeSelfAsLog <- function(filename) {
 
   ## Save file
   file.copy(sys.frame(1)$ofile, filepath)
+
+  messageWithSepLine(c("Script logged in:", file.path(name4dir, filename)))
 
   outputDone()
 }

@@ -1,6 +1,6 @@
 #' @titleFind objects in workspace
 #' @export
-findObjNames <- function (txt2incl = NULL, txt2excl = NULL, output = F) {
+findObjNames <- function (txt2incl, txt2excl = NULL, output = F) {
 
   outputFunProc(R)
 
@@ -22,7 +22,7 @@ findObjNames <- function (txt2incl = NULL, txt2excl = NULL, output = F) {
 
   if (output) {
     if (length(objnames) > 0) {
-      outputString("Found objects of interest:", sepline = T, seplinepos = "b")
+      outputString("Found objects of interest:", output_sepline = T, sepline_pos = "b")
       outputString(paste(paste(objnames, collapse = "\n"), "\n"))
     } else outputString("No objects found")
   }

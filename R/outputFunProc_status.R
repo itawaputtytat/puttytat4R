@@ -2,7 +2,7 @@
 #' @description Set outputFunProc active
 #' @param status logical. default = T (active)
 #' @export
-.outputFunProc_status <- function(status = T, print = F) {
+.outputFunProc_status <- function(status = F, print = F) {
   if (status) {
     puttytat4R_env$outputFunProc_status <- T
     if(print)

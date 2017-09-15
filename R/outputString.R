@@ -11,7 +11,9 @@ outputString <- function(string,
                          output_sepline = F,
                          sepline_pos = NULL, #c("T", "B")
                          sepline_char = "-",
-                         return_char = F) {
+                         return_char = F,
+                         linebreak = T,
+                         add_p = F) {
 
   ## Default output
   output <- paste(string, collapse = "\n")
@@ -57,7 +59,9 @@ outputString <- function(string,
   if (return_char) {
       return(output)
   } else {
-      if (type == "cat") cat(output, "\n")
+      if (type == "cat" & linebreak & !add_p) cat(output, "\n")
+      if (type == "cat" & linebreak & add_p) cat(output, "\n\n")
+      if (type == "cat" & linebreak == F) cat(output)
       if (type == "message") message(output)
   }
 }

@@ -4,8 +4,8 @@
 \alias{dbConnectBySettings}
 \title{Connect to PostgreSQL database}
 \usage{
-dbConnectBySettings(settings, dbname = settings$dns,
-  dbconn_name = settings$dns, pwd)
+dbConnectBySettings(sett = sett_db_default, db_name = sett$dns,
+  db_conn_name = sett$dns, pwd)
 }
 \description{
 Connect to PostgreSQL database
