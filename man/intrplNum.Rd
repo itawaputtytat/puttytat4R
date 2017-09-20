@@ -6,4 +6,3 @@
 \usage{
 intrplNum(values, rows_w_dat)
 }
-

@@ -16,4 +16,3 @@ Function creates dummy plot with specific width for left margin, by creating arb
 The resulting width for left in dummy plot will be extracted using ggtable_build().
 The grobs of target plot object will be adjustet using ggtable_build(). The width for left margin of the dummy plot will overwrite the width for left margin of the target plot.
 }
-

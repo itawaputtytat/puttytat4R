@@ -6,4 +6,3 @@
 \usage{
 createFilePath(dir_list)
 }
-

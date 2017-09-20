@@ -6,4 +6,3 @@
 \usage{
 outputSectionTitle(text, char_aes = "*", sepline_char = "=", ...)
 }
-

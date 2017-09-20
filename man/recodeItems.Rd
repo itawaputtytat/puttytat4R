@@ -16,4 +16,3 @@ recodeItems(dat, name4cols, range)
 \description{
 Recodes items from questionnaires
 }
-

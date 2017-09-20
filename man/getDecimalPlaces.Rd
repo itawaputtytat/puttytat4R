@@ -9,4 +9,3 @@ getDecimalPlaces(values, output = puttytat4R_env$outputFunProc_status)
 \description{
 Necessary for correct value presentation after interpolation using spline
 }
-

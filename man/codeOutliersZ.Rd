@@ -4,7 +4,5 @@
 \alias{codeOutliersZ}
 \title{Flag outlier above z = 1.96}
 \usage{
-codeOutliersZ(dat, zCutOff = 1.96, replace = NA, returnZValues = FALSE,
-  digits = 2)
+codeOutliersZ(dat, zCutOff = 1.96, returnZValues = FALSE, digits = 2)
 }
-

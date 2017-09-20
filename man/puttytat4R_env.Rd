@@ -12,4 +12,3 @@ puttytat4R_env
 Print multiple character values with enclosing separating lines
 }
 \keyword{datasets}
-

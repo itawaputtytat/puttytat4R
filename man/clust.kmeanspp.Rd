@@ -7,4 +7,3 @@
 clust.kmeanspp(dat_wide, k = 3, start = "random", iter.max = 500,
   nstart = 1, algorithm = "Hartigan-Wong", ...)
 }
-

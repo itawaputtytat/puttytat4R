@@ -12,4 +12,3 @@ progressBar100
 Use txtProgressBar with predifined settings (0-100%)
 }
 \keyword{datasets}
-

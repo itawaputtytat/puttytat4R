@@ -9,4 +9,3 @@ codeOutlierGrubb(dat)
 \description{
 http://daryavanichkina.com/wikipages/r/outlierdetectionR.html
 }
-

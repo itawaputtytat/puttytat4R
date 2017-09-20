@@ -10,4 +10,3 @@ dbConnectBySettings(sett = sett_db_default, db_name = sett$dns,
 \description{
 Connect to PostgreSQL database
 }
-

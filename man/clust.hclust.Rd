@@ -7,4 +7,3 @@
 clust.hclust(dat_wide, meth4dist = "EUCL", meth4agglo = "single", k = 3,
   ...)
 }
-

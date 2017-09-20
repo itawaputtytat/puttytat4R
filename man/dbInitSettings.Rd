@@ -10,4 +10,3 @@ dbInitSettings(dir_name = "sett_db_default_default",
 \description{
 Create tempate for database settings in directory "settings"
 }
-

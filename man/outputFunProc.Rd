@@ -14,4 +14,3 @@ outputFunProc(proctype, funname = "", othertxt = NA, calling = T)
 \description{
 Print currently used function name and type
 }
-

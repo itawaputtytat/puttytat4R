@@ -18,4 +18,3 @@ computeScores(dat, name4score, list4items, fun = "mean", compZ = F)
 \description{
 Recodes items from questionnaires
 }
-

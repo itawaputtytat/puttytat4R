@@ -14,4 +14,3 @@ dbGetSrc(dbconn, name4src)
 \description{
 Sources my be tables or views
 }
-

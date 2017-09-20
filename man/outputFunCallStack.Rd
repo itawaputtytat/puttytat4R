@@ -9,4 +9,3 @@ outputFunCallStack()
 \description{
 Outputs current frame number and objects, as well as frame number and objects from parents
 }
-

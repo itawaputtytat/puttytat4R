@@ -14,4 +14,3 @@ reloadPackage(name4pkg, character.only = FALSE)
 \description{
 Print currently used function name and type
 }
-

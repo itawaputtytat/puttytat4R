@@ -9,4 +9,3 @@ conv.sec2timestamp(seconds)
 \arguments{
 \item{seconds}{numeric. Seconds}
 }
-

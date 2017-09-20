@@ -9,4 +9,3 @@ writeSelfAsLog(filename)
 \description{
 E.g. for using as backup of query settings
 }
-

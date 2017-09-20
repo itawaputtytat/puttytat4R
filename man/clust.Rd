@@ -13,4 +13,3 @@ clust(dat_wide, k = 3, procedure = "kmeans", algorithm = "Hartigan-Wong",
 
 \item{k}{integer. Number of groups}
 }
-

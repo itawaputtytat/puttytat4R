@@ -21,4 +21,3 @@ outputString(string, type = "cat", output_sepline = F, sepline_pos = NULL,
 \description{
 Print multiple character values with enclosing separating lines
 }
-

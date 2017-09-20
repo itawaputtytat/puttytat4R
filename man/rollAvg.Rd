@@ -9,4 +9,3 @@ rollAvg(dat, k = 3, align = "center", avg_trunc = T)
 \description{
 ... which can also average truncated areas
 }
-

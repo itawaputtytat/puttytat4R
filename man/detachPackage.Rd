@@ -26,4 +26,3 @@ Source: http://stackoverflow.com/questions/6979917/how-to-unload-a-package-witho
 #unloadPackage("ggplot2")
 }
 \keyword{detachPackage}
-

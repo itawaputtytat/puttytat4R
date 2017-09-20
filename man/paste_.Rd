@@ -6,4 +6,3 @@
 \usage{
 paste_(...)
 }
-
