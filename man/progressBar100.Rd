@@ -9,6 +9,6 @@
 progressBar100
 }
 \description{
-Use txtProgressBar with predifined settings (0-100%)
+Use txtProgressBar with predifined settings 0-100%
 }
 \keyword{datasets}
