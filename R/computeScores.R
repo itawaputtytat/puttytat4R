@@ -1,29 +1,29 @@
 #' @title Recode/Invert items
 #' @description Recodes items from questionnaires
 #' @param dat Data object
-#' @param name4scores Names for target scores
-#' @param list4items List of item/column names for each score in name4score
+#' @param score_namess Names for target scores
+#' @param list4items List of item/column names for each score in score_names
 #' @param fun Set function for score computation as character: "mean" or "sum"
 #' @export
-computeScores <- function(dat, name4score, list4items, fun = "mean", compZ = F) {
+computeScores <- function(dat, score_names, score_items_list, fun = "mean", compZ = F) {
 
-  for(s in 1:length(name4score)) {
+  for(s in 1:length(score_names)) {
 
-    dat[, name4score[s]] <- NULL
+    score_name <- tolower(score_names[s])
 
-    if (fun == "mean") score <- rowMeans(dat[, list4items[[s]]], na.rm = T)
-    if (fun == "sum") score <- rowSums(dat[, list4items[[s]]], na.rm = T)
-
-    dat <- cbind(dat, score)
-    names(dat)[ncol(dat)] <- name4score[s]
-  }
-
-  if (compZ) {
-    for(s in 1:length(name4score)) {
-      score.z <- scale(dat[, name4score[s]], center = T, scale = T)
-      dat <- cbind(dat, score.z)
-      names(dat)[ncol(dat)] <- paste0(name4score[s], ".z")
+    if (fun == "mean") {
+      dat[, score_name] <- rowMeans(dat[, score_items_list])
     }
+
+    if (fun == "sum")  {
+      dat[, score_name] <- rowSums(dat[, score_items_list])
+    }
+
+    if (compZ) {
+      score_name_z <- paste_(score_name, "z")
+      dat[, score_name_z] <- scale(dat[, score_name], center = T, scale = T)
+    }
+
   }
 
   return(dat)

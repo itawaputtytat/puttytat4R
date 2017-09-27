@@ -3,7 +3,7 @@
 #' @export
 dbInitSettings <- function(dir_name = "sett_db_default_default",
                           filename = "sett_db_default_default.R",
-                          dns_default = "postgres") {
+                          dns_default = "\"postgres\"") {
   outputFunProc(R)
 
   library(RPostgreSQL)
