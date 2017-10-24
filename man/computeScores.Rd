@@ -4,16 +4,17 @@
 \alias{computeScores}
 \title{Recode/Invert items}
 \usage{
-computeScores(dat, score_names, score_items_list, fun = "mean", compZ = F)
+computeScores(dat, subscale_items_list, lower_subscale_names = T,
+  fun = "mean", compute_z = F)
 }
 \arguments{
 \item{dat}{Data object}
 
 \item{fun}{Set function for score computation as character: "mean" or "sum"}
 
-\item{score_namess}{Names for target scores}
+\item{subscale_namess}{Names for target scores}
 
-\item{list4items}{List of item/column names for each score in score_names}
+\item{list4items}{List of item/column names for each score in subscale_names}
 }
 \description{
 Recodes items from questionnaires

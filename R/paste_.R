@@ -2,11 +2,32 @@
 #' @export
 paste_ <- function(...) {
 
-  ## Get function call arguments
-  input <<- as.list(match.call(expand.dots = FALSE))["..."]
-  input <<- do.call(c, unlist(input, recursive=FALSE, use.names = F), env = parent.frame())
+  output <- paste(..., sep = "_")
 
-  output <- paste(input, collapse = "_")
+  ## V1
+  # ## Get function call arguments
+  # input <<- as.list(match.call(expand.dots = FALSE))["..."]
+  # input <<- do.call(c, unlist(input, recursive=FALSE, use.names = F), env = parent.frame())
+  #
+  # output <- paste(input, collapse = "_")
+
+  ## V2
+  # ## Get function call arguments
+  # input <- match.call(expand.dots = FALSE)[["..."]]
+  # print(input)
+  # print("--------------")
+  # ## Eval to obtain vector values in instead of c() expression
+  # input <- unlist(lapply(input, eval))
+  #
+  # print(input)
+  # print("--------------")
+  # # input <- do.call(c, input, env = parent.frame())
+  # #
+  # # print(input)
+  # # input <- as.vector(input)
+  # # print(input)
+  #
+  # # output <- paste(input, collapse = "_")
 
   return(output)
 }

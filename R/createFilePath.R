@@ -1,6 +1,6 @@
+
 #' @title Build file path and create subdirectories if necessary
 #' @export
-
 createFilePath <- function(dir_list) {
 
   outputFunProc(R)

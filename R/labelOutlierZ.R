@@ -3,8 +3,7 @@
 
 codeOutliersZ <- function(dat,
                           zCutOff = 1.96,
-                          returnZValues = FALSE,
-                          digits = 2) {
+                          returnZValues = FALSE) {
 
   outputFunProc(R)
 
@@ -24,7 +23,6 @@ codeOutliersZ <- function(dat,
 
   ## If values == TRUE, return z score for each value
   if (returnZValues) {
-    #return(round(absolute_z, digits))
     return(absolute_z) #if values == TRUE, return z score for each value
 
     ## Otherwise, return values with outliers replaced
@@ -38,3 +36,4 @@ codeOutliersZ <- function(dat,
 
 #' @export
 labelOutlierZ <- codeOutliersZ
+
