@@ -24,7 +24,7 @@ clust.kmeans <-   function (dat_wide,
   ## Create dataframe for identifier (e.g. passing)
   ## ... and corresponding cluster-nr found using algorithm
   assignment <-
-    data.frame(id = rownames(dat2proc.wide),
+    data.frame(id = rownames(dat_wide),
                clustgroup = factor(res$cluster),
                row.names  = NULL)
 

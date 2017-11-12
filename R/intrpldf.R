@@ -76,9 +76,8 @@ intrpldf <- function(dat,
   } )
 
   dat_new <- data.frame(dat_new)
-  dat <- dat_new
   #dat <- as.data.frame(dat, stringsAsFactors = F)
-  colnames(dat) <- colnames_backup
+  colnames(dat_new) <- colnames_backup
 
   ## LOG
   ## Interpolation necessary?
@@ -88,7 +87,7 @@ intrpldf <- function(dat,
   dat$intrpld[rows_na] <- T
 
   ## In case of individual column name for interpolation indicator
-  colnames(dat)[ncol(dat)] <- colname_intrpld
+  colnames(dat_new)[ncol(dat_new)] <- colname_intrpld
 
 
   if (showLog) {
@@ -97,5 +96,5 @@ intrpldf <- function(dat,
   }
 
   outputDone()
-  return(dat)
+  return(dat_new)
 }
