@@ -13,7 +13,7 @@ initQuestSettings <- function(abbr,
 
   ## Load meta info on questionnaire
   sett_q[["db_data"]] <- dbGetSrc(db_conn_name, db_src_name)
-  sett_q[["db_data"]] <- sett_q[["db_data"]] %>% arrange_("id")
+  sett_q[["db_data"]] <- sett_q[["db_data"]] %>% arrange_("item_id")
 
   ## Create new meta info data set based on selected language
   ## ... and remove language suffixes from column names
@@ -23,7 +23,7 @@ initQuestSettings <- function(abbr,
   col_names <- names(sett_q[["db_data_lang"]])
   names(sett_q[["db_data_lang"]]) <-
     vapply(col_names,
-           function(x) sub(paste0("_", lang), "", x),
+           function(col_name) sub(paste0("_", lang), "", col_name),
            character(1),
            USE.NAMES = F)
 
@@ -50,10 +50,10 @@ initQuestSettings <- function(abbr,
   sett_q[["scale_values_min"]] <- min(sett_q[["scale_values"]])
   sett_q[["scale_values_max"]] <- max(sett_q[["scale_values"]])
 
-  ## Create vectore of columns to be reversed
-  if ("reversed" %in% colnames(sett_q[["db_data"]])) {
+  ## Create vectore of columns to be is_reserved
+  if ("is_reserved" %in% colnames(sett_q[["db_data"]])) {
     sett_q[["item_col_names_to_reverse"]] <-
-      sett_q[["item_col_names"]][sett_q[["db_data"]][, "reversed"]]
+      sett_q[["item_col_names"]][sett_q[["db_data"]][, "is_reserved"]]
   }
 
   ## Create final data and append data, if object for settings already exists
