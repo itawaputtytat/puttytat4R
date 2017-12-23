@@ -22,9 +22,12 @@ computeSummary <- function(dat, col_name_group, col_name_var, fun_name_stat) {
                               unclass(paste(var, stat, sep = "_")))
         )
 
-      dat_final <-
-        left_join(dat_final,
-                  dat_temp)
+      ## Do silently to avoiding joining messages in loop
+      suppressMessages(
+        dat_final <-
+          left_join(dat_final,
+                    dat_temp)
+      )
     }
   }
   return(dat_final)

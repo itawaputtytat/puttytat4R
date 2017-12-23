@@ -34,10 +34,11 @@ intrpldf <- function(dat,
   dat[, colname4ref] <- as.numeric(dat[, colname4ref])
   col_n <- ncol(dat)
 
-  ## Identify rows with missing values using second column
-  rows_w_dat <- which(!is.na(dat[, 2]))
+  ## Identify rows with missing values using first of non-reference-columns
+  col_finder <- grep(colname4ref, colnames(dat), value = T, invert = T)[1]
+  rows_w_dat <- which(!is.na(dat[, col_finder]))
   rows_w_dat_min <- min(rows_w_dat)
-  rows_na <- which(is.na(dat[, 2]))
+  rows_na <- which(is.na(dat[, col_finder]))
 
   colnames_backup <- colnames(dat)
 
@@ -83,12 +84,9 @@ intrpldf <- function(dat,
   ## Interpolation necessary?
 
   ## Code interpolated values as T
-  dat$intrpld <- F
-  dat$intrpld[rows_na] <- T
-
-  ## In case of individual column name for interpolation indicator
-  colnames(dat_new)[ncol(dat_new)] <- colname_intrpld
-
+  ## Consider case of individual column name for interpolation indicator
+  dat[, colname_intrpld] <- F
+  dat[rows_na, colname_intrpld] <- T
 
   if (showLog) {
     cat("* Row numbers before:", length(rows_w_dat), "\n")
