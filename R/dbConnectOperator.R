@@ -36,7 +36,7 @@ dbConnectOperator <- function(db_sett = sett_db_default,
     }
   )
 
-  ## User selection of requires database
+  ## User selection of required database
   if (is.null(db_name)) {
 
     input <- c()
@@ -45,22 +45,26 @@ dbConnectOperator <- function(db_sett = sett_db_default,
       outputString(paste(dblist_string, collapse = "\n"))
       input <- readline(">>> ")
       input <- as.numeric(input)
-      if (!input %in% 1:length(db_list))
-        message("Please enter the list number of the required database") else
-          break;
+      if (!input %in% 1:length(db_list)) {
+        message("Please enter the list number of the required database")}
+      else {
+        break;
+      }
     }
     db_name <- db_list[input]
     catWithSepLine(c("Selected database:", paste0("* ", db_name)))
 
-    if (is.null(db_conn_name))
+    if (is.null(db_conn_name)) {
       db_conn_name <- paste0("db_conn_", input)
+    }
+
   } ## End of user selection
 
   ## Dynamic naming using numbers
   if (is.null(db_conn_name)) {
-    #dbconn_nr <- length(grep("db_conn_", ls(envir = .GlobalEnv)))
-    dbconn_nr <- which(db_list == db_name)
-    db_conn_name <- paste0("db_conn_", dbconn_nr)
+    #db_conn_nr <- length(grep("db_conn_", ls(envir = .GlobalEnv)))
+    db_conn_nr <- which(db_list == db_name)
+    db_conn_name <- paste0("db_conn_", db_conn_nr)
   }
 
 
@@ -69,16 +73,16 @@ dbConnectOperator <- function(db_sett = sett_db_default,
     pwd <- readline(">>> Enter password: ") else
       pwd <- db_sett$pwd
 
-    ## Connect to target database
-    dbConnectBySettings(db_sett,
-                        db_name = db_name,
-                        db_conn_name = db_conn_name,
-                        pwd = pwd)
+  ## Connect to target database
+  dbConnectBySettings(db_sett,
+                      db_name = db_name,
+                      db_conn_name = db_conn_name,
+                      pwd = pwd)
 
-    ## Add db_name to connection attributes
-    eval_string <-
-      paste0("attr(", db_conn_name, ", \"db_name\") <- \"", db_name, "\"")
-    eval(parse(text = eval_string), envir = .GlobalEnv)
+  ## Add db_name to connection attributes
+  eval_string <-
+    paste0("attr(", db_conn_name, ", \"db_name\") <- \"", db_name, "\"")
+  eval(parse(text = eval_string), envir = .GlobalEnv)
 
   if (return_db_conn_name) {
     return(db_conn_name)

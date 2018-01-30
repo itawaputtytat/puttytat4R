@@ -1,8 +1,8 @@
 #' @title Plot item profile
 #' @export
 plotItemProfile <- function(dat,
-                            col_name_items = "item_id",
-                            col_name_values = "response_mean",
+                            col_name_items = "variables",
+                            col_name_values = "mean",
                             col_name_group = NULL,
                             value_range) {
 

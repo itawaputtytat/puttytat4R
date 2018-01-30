@@ -63,7 +63,7 @@ breakStringToLines <- function(text,
       text_final <- paste0(text_final, text_split[i])
       ## Compute new line length
       nchar_cum <- nchar_cum + nchar(text_split[i])
-      if ((nchar_cum) >= nchar_per_line) {
+      if ((nchar_cum) > nchar_per_line) {
         text_final <- paste0(text_final, "\n")
         nchar_cum <- 0
       }

@@ -4,7 +4,8 @@ initQuestSettings <- function(abbr,
                               db_conn_name,
                               db_src_name,
                               sett_name = "sett_q",
-                              lang = "eng") {
+                              lang = "eng",
+                              ...) {
 
   sett_q <- list()
   sett_q[["abbr"]] <- abbr
@@ -28,7 +29,7 @@ initQuestSettings <- function(abbr,
            USE.NAMES = F)
 
   ## Create vector of column names for items
-  sett_q[["item_col_names"]] <-
+  sett_q[["col_names"]] <-
     sprintf(paste0(abbr, "_%02d"), 1:nrow(sett_q[["db_data"]]))
 
   ## Obtain names for subscales
@@ -38,7 +39,7 @@ initQuestSettings <- function(abbr,
 
   ## Create list of subscales containing column names of items
   sett_q[["subscale_items"]] <-
-    data.frame(item_col_name = sett_q[["item_col_names"]],
+    data.frame(col_name = sett_q[["col_names"]],
                subscale_abbr = sett_q[["subscale_names"]],
                stringsAsFactors = F) %>%
     split(.[,"subscale_abbr"]) %>%
@@ -50,11 +51,39 @@ initQuestSettings <- function(abbr,
   sett_q[["scale_values_min"]] <- min(sett_q[["scale_values"]])
   sett_q[["scale_values_max"]] <- max(sett_q[["scale_values"]])
 
-  ## Create vectore of columns to be is_reserved
+  ## Create vector of columns to be is_reserved
   if ("is_reserved" %in% colnames(sett_q[["db_data"]])) {
-    sett_q[["item_col_names_to_reverse"]] <-
-      sett_q[["item_col_names"]][sett_q[["db_data"]][, "is_reserved"]]
+    sett_q[["col_names_to_reverse"]] <-
+      sett_q[["col_names"]][sett_q[["db_data"]][, "is_reserved"]]
   }
+
+  ## Create data frame for item texts
+  sett_q[["item_texts"]] <-
+    data.frame(
+      col_name = sett_q[["col_names"]],
+      item_text = sett_q[["db_data_lang"]][, "item_text"],
+      stringsAsFactors = F,
+      row.names = NULL
+    )
+
+  ## Create data frame for item texts with line breaks
+  ## Convert item text to factor to keep level order
+  sett_q[["item_texts_with_line_breaks"]] <-
+    breakStringToLines(sett_q[["db_data_lang"]][, "item_text"],
+                       ...)
+
+  sett_q[["item_texts_with_line_breaks"]] <-
+    data.frame(
+      col_name = sett_q[["col_names"]],
+      item_text = sett_q[["item_texts_with_line_breaks"]],
+      stringsAsFactors = F,
+      row.names = NULL
+    )
+
+  sett_q[["item_texts_with_line_breaks"]][, "item_text"] <-
+    factor(
+      sett_q[["item_texts_with_line_breaks"]][, "item_text"],
+      levels = sett_q[["item_texts_with_line_breaks"]][, "item_text"])
 
   ## Create final data and append data, if object for settings already exists
   if (exists(sett_name, env = .GlobalEnv)) {
