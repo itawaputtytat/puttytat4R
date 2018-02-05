@@ -110,8 +110,8 @@ intrpldf <- function(dat,
 
   ## Code interpolated values as T
   ## Consider case of individual column name for interpolation indicator
-  dat[, colname_intrpld] <- F
-  dat[rows_na, colname_intrpld] <- T
+  dat_new[, colname_intrpld] <- F
+  dat_new[rows_na, colname_intrpld] <- T
 
   if (showLog) {
     cat("* Row numbers before:", length(rows_w_dat), "\n")

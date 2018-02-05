@@ -2,6 +2,7 @@
 
 export(.outputFunProc_status)
 export(adjustLeftMargin)
+export(attachLibraries)
 export(breakStringToLines)
 export(catWithSepLine)
 export(clearWorkspace)
