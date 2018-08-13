@@ -5,7 +5,7 @@ attachLibraries <- function(file_path) {
   libs <- readLines(file_path)
 
   for(x in libs) {
-    pos <- max(0, gregexpr("#", x)[[1]][1])
+    pos <- gregexpr("#", x)[[1]][1]
 
     if (pos == -1) {
       pos = nchar(x) + 1
@@ -15,7 +15,8 @@ attachLibraries <- function(file_path) {
     res <- sub(" ", "", res)
 
     if (res != "") {
-      library(res, character.only = T)
+      require(res, character.only = T)
     }
+    outputString(paste("* Attached package:", res))
   }
 }

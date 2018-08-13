@@ -16,8 +16,8 @@ plotItemProfile <- function(dat,
 
   ## Reverse items (result: from top to bottom)
   unique_items <- unique(dat[, col_name_items])
-  unique_items <- unlist(unique_items, use.names = F)
-  unique_items <- sort(unique_items)
+  # unique_items <- unlist(unique_items, use.names = F)
+  # unique_items <- sort(unique_items)
 
   dat[, col_name_items] <-
     factor(dat[, col_name_items], levels = rev(unique_items))

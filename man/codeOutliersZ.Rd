@@ -6,3 +6,6 @@
 \usage{
 codeOutliersZ(dat, zCutOff = 1.96, returnZValues = FALSE)
 }
+\description{
+Flag outlier above z = 1.96
+}

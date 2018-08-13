@@ -6,3 +6,6 @@
 \usage{
 createFilePath(dir_list)
 }
+\description{
+Build file path and create subdirectories if necessary
+}

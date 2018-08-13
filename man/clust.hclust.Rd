@@ -4,6 +4,9 @@
 \alias{clust.hclust}
 \title{Hierarchical clustering}
 \usage{
-clust.hclust(dat_wide, meth4dist = "EUCL", meth4agglo = "single", k = 3,
-  ...)
+clust.hclust(dat_wide, meth4dist = "EUCL", meth4agglo = "single",
+  k = 3, ...)
+}
+\description{
+Hierarchical clustering
 }

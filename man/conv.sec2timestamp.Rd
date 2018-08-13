@@ -9,3 +9,6 @@ conv.sec2timestamp(seconds)
 \arguments{
 \item{seconds}{numeric. Seconds}
 }
+\description{
+Convert seconds to timestamp (HH:MM:SS.ms)
+}

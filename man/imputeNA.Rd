@@ -7,3 +7,6 @@
 imputeNA(dat, col_names_excl, m = 50, seed = 42, method = "pmm",
   printFlag = F)
 }
+\description{
+Impute values using mice
+}

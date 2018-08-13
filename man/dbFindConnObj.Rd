@@ -4,7 +4,7 @@
 \alias{dbFindConnObj}
 \title{Find object name by dns}
 \usage{
-dbFindConnObj(db_name, output = F)
+dbFindConnObj(db_name, output = F, ...)
 }
 \description{
 Find object names by dns, if connection was initialised using dbConnectOperator, which adds the original dns as attribute to the object name of the connection.

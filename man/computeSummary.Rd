@@ -4,5 +4,10 @@
 \alias{computeSummary}
 \title{Compute summary}
 \usage{
-computeSummary(dat, col_name_group, col_name_var, fun_name_stat)
+computeSummary(dat, col_names_group = NULL, col_names_values = "value",
+  fun_name_stat = c("mean", "sd", "median", "min", "max", "se", "ci"),
+  conf = 0.95, remove_na = T)
+}
+\description{
+Compute summary
 }

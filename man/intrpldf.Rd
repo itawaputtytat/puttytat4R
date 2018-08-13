@@ -8,3 +8,6 @@ intrpldf(dat, colname4ref, min = NULL, max = NULL, stepsize = 1,
   colnames2excl = NULL, binary_vars = NULL, showLog = F,
   colname_intrpld = "intrpld", replace_preceding = T)
 }
+\description{
+Interpolate complete data.frame
+}

@@ -4,12 +4,16 @@
 \alias{clust}
 \title{Use different algorithms for cluster analysis}
 \usage{
-clust(dat_wide, k = 3, procedure = "kmeans", algorithm = "Hartigan-Wong",
-  iter.max = 500, nstart = 1, start = "random", measure4diss = "EUCL",
-  method4agglo = "single", seed = 42, ...)
+clust(dat_wide, k = 3, procedure = "kmeans",
+  algorithm = "Hartigan-Wong", iter.max = 500, nstart = 1,
+  start = "random", measure4diss = "EUCL", method4agglo = "single",
+  seed = 42, ...)
 }
 \arguments{
 \item{dat_wide}{Data.frame in wide format: Row = case; column = values; multiple columns = e.g. values for each time step}
 
 \item{k}{integer. Number of groups}
+}
+\description{
+Use different algorithms for cluster analysis
 }

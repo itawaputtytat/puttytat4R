@@ -4,5 +4,8 @@
 \alias{reportNA}
 \title{Report NA values}
 \usage{
-reportNA(dat, id_names)
+reportNA(dat, id_names, return_bool_only = F)
+}
+\description{
+Report NA values
 }

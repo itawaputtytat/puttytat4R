@@ -4,12 +4,13 @@
 \alias{dbGetSrc}
 \title{Query complete database source}
 \usage{
-dbGetSrc(dbconn, name4src)
+dbGetSrc(db_conn_name, db_src_name, add_col_db_src_name = F,
+  arrange_by_col_name = NULL)
 }
 \arguments{
-\item{dbconn}{A DBIConnection object, as produced by dbConnect or character of the object name}
+\item{db_conn_name}{A DBIConnection object, as produced by db_conn_nameect or character of the object name}
 
-\item{name4src}{Name of database source as character}
+\item{db_src_name}{Name of database source as character}
 }
 \description{
 Sources my be tables or views

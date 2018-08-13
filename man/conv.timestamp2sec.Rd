@@ -9,3 +9,6 @@ conv.timestamp2sec(timestamp)
 \arguments{
 \item{timestamp}{character. Timestamp in format HH:MM:SS.s}
 }
+\description{
+Convert timestamp (HH:MM:SS.ms) to seconds
+}

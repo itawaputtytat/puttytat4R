@@ -6,3 +6,6 @@
 \usage{
 intrplNum(values, rows_w_dat)
 }
+\description{
+Interpolate numeric values
+}

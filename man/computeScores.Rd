@@ -4,8 +4,9 @@
 \alias{computeScores}
 \title{Recode/Invert items}
 \usage{
-computeScores(dat, subscale_items_list, lower_subscale_names = T,
-  fun = "mean", compute_z = F)
+computeScores(dat, subscale_items_list, col_name_prefix = NULL,
+  col_name_prefix_overall = NULL, lower_subscale_names = T,
+  fun = "mean", compute_z = F, compute_overall = F)
 }
 \arguments{
 \item{dat}{Data object}

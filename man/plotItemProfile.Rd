@@ -4,6 +4,9 @@
 \alias{plotItemProfile}
 \title{Plot item profile}
 \usage{
-plotItemProfile(dat, col_name_items = "item_id",
-  col_name_values = "response_mean", col_name_group, value_range)
+plotItemProfile(dat, col_name_items = "variables",
+  col_name_values = "mean", col_name_group = NULL, value_range)
+}
+\description{
+Plot item profile
 }

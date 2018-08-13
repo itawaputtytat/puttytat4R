@@ -12,7 +12,7 @@ computeScores <- function(dat,
                           lower_subscale_names = T,
                           fun = "mean",
                           compute_z = F,
-                          compute_overall = T) {
+                          compute_overall = F) {
 
 
   score_names <- names(subscale_items_list)
@@ -30,47 +30,61 @@ computeScores <- function(dat,
     score_name_overall <- tolower(score_name_overall)
   }
 
+  dat_score <- dat
+  dat_score[, unlist(subscale_items_list, use.names = F)] <- NULL
+
   for(s in 1:length(subscale_items_list)) {
 
     score_name_temp <- score_names[s]
     subscales_items_temp <- subscale_items_list[[s]]
 
-    if (fun == "mean") {
-      dat[, score_name_temp] <- rowMeans(dat[, subscales_items_temp])
-    }
+    if (length(dat_score[, subscales_items_temp]) == 1) {
+      dat_score[, score_name_temp] <- dat_score[, subscales_items_temp]
+    } else
+    {
+      if (fun == "mean") {
+        dat_score[, score_name_temp] <-
+          rowMeans(dat[, subscales_items_temp], na.rm = T)
+      }
 
-    if (fun == "sum")  {
-      dat[, score_name_temp] <- rowSums(dat[, subscales_items_temp])
-    }
+      if (fun == "sum")  {
+        dat_score[, score_name_temp] <-
+          rowSums(dat[, subscales_items_temp], na.rm = T)
+      }
 
-    if (compute_z) {
-      score_name_temp_z <- paste_(score_name_temp, "z")
-      dat[, score_name_temp_z] <-
-        scale(dat[, score_name_temp],
-              center = T,
-              scale = T)
+      if (compute_z) {
+        score_name_temp_z <- paste_(score_name_temp, "z")
+        dat_score[, score_name_temp_z] <-
+          scale(dat_score[, score_name_temp],
+                center = T,
+                scale = T)
+      }
     }
 
   } ## End of for loop
 
   if (compute_overall) {
 
+    names_items <- unlist(subscale_items_list, use.names = F)
+
     if (fun == "mean") {
-      dat[, score_name_overall] <- rowMeans(dat[, subscales_items_temp])
+      dat_score[, score_name_overall] <-
+        rowMeans(dat[, names_items], na.rm = T)
     }
 
     if (fun == "sum") {
-      dat[, score_name_overall] <- rowMeans(dat[, subscales_items_temp])
+      dat_score[, score_name_overall] <-
+        rowSums(dat[, names_items], na.rm = T)
     }
 
     if (compute_z) {
       score_name_overall_z <- paste_(score_name_overall, "z")
-      dat[, score_name_overall_z] <-
-        scale(dat[, score_name_overall],
+      dat_score[, score_name_overall_z] <-
+        scale(dat_score[, score_name_overall],
               center = T,
               scale = T)
     }
   }
 
-  return(dat)
+  return(dat_score)
 }

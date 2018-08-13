@@ -6,3 +6,6 @@
 \usage{
 outputSectionTitle(text, char_aes = "*", sepline_char = "=", ...)
 }
+\description{
+Output section title
+}

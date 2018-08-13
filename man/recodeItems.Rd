@@ -4,14 +4,14 @@
 \alias{recodeItems}
 \title{Recode/Invert items}
 \usage{
-recodeItems(dat, name4cols, range)
+recodeItems(dat, col_names, min, max)
 }
 \arguments{
 \item{dat}{Data object}
 
-\item{range}{Range of scale as integer}
-
 \item{name4src}{Name of database source as character}
+
+\item{range}{Range of scale as integer}
 }
 \description{
 Recodes items from questionnaires

@@ -6,3 +6,6 @@
 \usage{
 paste_(...)
 }
+\description{
+Concatenate strings using underscore as operator
+}

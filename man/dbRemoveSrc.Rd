@@ -9,3 +9,6 @@ dbRemoveSrc(name4src, dbconn)
 \arguments{
 \item{name4src.}{character. Name for view or table}
 }
+\description{
+Remove views or tables from database
+}

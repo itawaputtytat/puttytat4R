@@ -4,8 +4,9 @@
 \alias{outputString}
 \title{Print text with enclosing separating lines}
 \usage{
-outputString(string, type = "cat", output_sepline = F, sepline_pos = NULL,
-  sepline_char = "-", return_char = F, linebreak = T, add_p = F)
+outputString(string, type = "cat", output_sepline = F,
+  sepline_pos = NULL, sepline_char = "-", return_char = F,
+  linebreak = T, add_p = F)
 }
 \arguments{
 \item{string}{Vector of character values}

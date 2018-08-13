@@ -9,29 +9,43 @@ computeSummary <- function(dat,
                                "median",
                                "min",
                                "max",
-                               "se"),
+                               "se",
+                               "ci"),
+                           conf = .95,
                            remove_na = T) {
 
   if (is.null(col_names_group)) {
-    col_names_group <- c("group", "variables")
+    dat[, "no_group"] <- 1
+    col_names_group <- c("no_group", "col_name")
   }
 
-  ## Create final data frame for merging
+  # ## Create final data frame for merging
   dat_final <-
     dat %>%
-    group_by_(.dots = col_names_group) %>%
-    summarize()
+    distinct_(col_names_group)
+    # group_by_(.dots = col_names_group) %>%
+    # summarize()
 
   for (var in col_names_values) {
     for (stat in fun_name_stat) {
 
       ## Create formula
-      if (!stat == "se") {
+      if (!stat %in% c("se", "ci")) {
         formula_temp <-
           as.formula(paste0("~", stat, "(v, na.rm = remove_na)"))
       } else {
-        formula_temp <-
-          as.formula(paste0("~ sd(v, na.rm = remove_na) / sqrt(n())"))
+
+        if (stat == "se") {
+          formula_temp <-
+            as.formula(paste0("~ sd(v, na.rm = remove_na) / sqrt(n())"))
+        }
+
+        if (stat == "ci") {
+          formula_temp <-
+            as.formula(paste0("~ (sd(v, na.rm = remove_na) / sqrt(n())) * ",
+                              "qt(c/2 + .5, n() - 1)"))
+        }
+
       }
 
       dat_temp <-
@@ -39,7 +53,9 @@ computeSummary <- function(dat,
         group_by_(.dots = col_names_group) %>%
         summarize_(.dots = setNames(
           list(interp(formula_temp,
-                      v = as.name(var) )),
+                      v = as.name(var),
+                      remove_na = remove_na,
+                      c = conf)),
           stat)
         )
 

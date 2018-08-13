@@ -7,3 +7,6 @@
 clust.kmeans(dat_wide, k = 3, iter.max = 500, nstart = 1,
   algorithm = "Hartigan-Wong", ...)
 }
+\description{
+k-Means clustering
+}
