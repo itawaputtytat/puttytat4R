@@ -16,17 +16,20 @@ computeSummary <- function(dat,
 
   if (is.null(col_names_group)) {
     dat[, "no_group"] <- 1
-    col_names_group <- c("no_group", "col_name")
+    col_names_group <- c("no_group")
   }
 
-  # ## Create final data frame for merging
-  dat_final <-
-    dat %>%
-    distinct_(col_names_group)
+  dat_coll <- c()
+
+  for (var in col_names_values) {
+
+    # ## Create final data frame for merging
+    dat_final <-
+      dat %>%
+      distinct_(col_names_group)
     # group_by_(.dots = col_names_group) %>%
     # summarize()
 
-  for (var in col_names_values) {
     for (stat in fun_name_stat) {
 
       ## Create formula
@@ -47,7 +50,6 @@ computeSummary <- function(dat,
         }
 
       }
-
       dat_temp <-
         dat %>%
         group_by_(.dots = col_names_group) %>%
@@ -63,13 +65,16 @@ computeSummary <- function(dat,
       suppressMessages(
         dat_final <-
           left_join(dat_final,
-                    dat_temp)
+                    dat_temp) %>%
+          data.frame()
       )
+    }
+    if (length(col_names_values) > 1) {
+      dat_coll[[var]] <- dat_final
+    } else {
+      dat_coll <- dat_final
     }
   }
 
-  dat_final <- data.frame(dat_final)
-
-  return(dat_final)
+  return(dat_coll)
 }
-

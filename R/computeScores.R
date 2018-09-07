@@ -38,8 +38,8 @@ computeScores <- function(dat,
     score_name_temp <- score_names[s]
     subscales_items_temp <- subscale_items_list[[s]]
 
-    if (length(dat_score[, subscales_items_temp]) == 1) {
-      dat_score[, score_name_temp] <- dat_score[, subscales_items_temp]
+    if (length(subscales_items_temp) == 1) {
+      dat_score[, score_name_temp] <- dat[, subscales_items_temp]
     } else
     {
       if (fun == "mean") {

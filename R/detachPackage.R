@@ -12,14 +12,15 @@
 #' #library(ggplot2)
 #' #unloadPackage("ggplot2")
 #' @export
-
 detachPackage <- function(name4pkg = "puttytat4R",
                           character.only = FALSE,
                           force = FALSE) {
 
-    ## In case name4pkg is no string
-  if (name4pkg != "puttytat4R" & !character.only)
+  ## In case name4pkg is no string
+  if (name4pkg != "puttytat4R" & !character.only) {
     name4pkg <- deparse(substitute(name4pkg))
+    name4pkg <- gsub("\"", "", name4pkg)
+  }
 
   ## Create string for detach function
   search_pkg <- paste("package", name4pkg, sep = ":")

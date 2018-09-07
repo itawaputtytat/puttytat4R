@@ -29,8 +29,9 @@ clust.kmeanspp <-   function (dat_wide,
   ## ... and corresponding cluster-nr found using algorithm
   assignment <-
     data.frame(id = rownames(dat_wide),
-               clustgroup = factor(res$cluster),
-               row.names  = NULL)
+               cluster_group = res$cluster,
+               row.names  = NULL,
+               stringsAsFactors = FALSE)
 
   outputDone()
   return(list(result = res, assignment = assignment))

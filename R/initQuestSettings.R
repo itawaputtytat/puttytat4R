@@ -3,7 +3,7 @@
 initQuestSettings <- function(abbr,
                               db_conn_name,
                               db_src_name,
-                              sett_name = NULL,
+                              sett_name = "sett",
                               lang = "eng",
                               max_nchar = 99,
                               ...) {
@@ -68,12 +68,29 @@ initQuestSettings <- function(abbr,
   temp <- sett_q[["subscales"]][["overview"]][, col_finder]
   sett_q[["subscales"]][["abbr_lang"]] <- temp
 
-  ## Get subscale name for active language
+  ## Get subscale names for active language
   col_finder <-
     grepl(lang, names(sett_q[["subscales"]][["overview"]])) &
     !grepl("abbr", names( sett_q[["subscales"]][["overview"]]))
   temp <- sett_q[["subscales"]][["overview"]][, col_finder]
   sett_q[["subscales"]][["names_lang"]] <- temp
+
+  ## Get general subscale abbreviations and subscale names for active language
+  col_finder1 <-
+    !grepl(lang, names(sett_q[["subscales"]][["overview"]])) &
+    grepl("abbr", names( sett_q[["subscales"]][["overview"]]))
+  col_finder1 <- names(sett_q[["subscales"]][["overview"]])[col_finder1]
+  col_finder2 <-
+    grepl(lang, names(sett_q[["subscales"]][["overview"]])) &
+    !grepl("abbr", names( sett_q[["subscales"]][["overview"]]))
+  col_finder2 <- names(sett_q[["subscales"]][["overview"]])[col_finder2]
+  col_finder <- c(col_finder1, col_finder2)
+  temp <- sett_q[["subscales"]][["overview"]][, col_finder]
+  sett_q[["subscales"]][["abbr_eng_and_names_lang"]] <- temp
+  col_names <- names(sett_q[["subscales"]][["abbr_eng_and_names_lang"]])
+  col_names[2] <- "subscale_name"
+  names(sett_q[["subscales"]][["abbr_eng_and_names_lang"]]) <- col_names
+
 
   ## Create list of subscales containing column names of items
   dat_temp <-
@@ -134,17 +151,31 @@ initQuestSettings <- function(abbr,
     return (sett_q_final)
   } else {
 
+    ## Check if settings objects is available
     if (exists(sett_name, env = .GlobalEnv)) {
-      outputString(paste("* Object", sett_name, "already exists"))
-      outputString(paste("** Results will be overwritten or appended"))
-      sett_q_final <- get(sett_name, env = .GlobalEnv)
+      sett_q_final <- get(sett_name, .GlobalEnv)
     } else {
       sett_q_final <- list()
     }
-    sett_q_final[[abbr]] <- sett_q
 
+    ## Check if quest element is available
+    if (length(sett_q_final[["quest"]]) != 0) {
+
+
+    } else {
+      sett_q_final[["quest"]] <- list()
+      sett_q_final[["quest"]][[abbr]] <- list()
+    }
+
+    ## Check if specific questionnaire settings are available
+    if (length(sett_q_final[["quest"]][[abbr]]) != 0) {
+      outputString(paste("* Object", sett_name, "already exists"))
+      outputString(paste("** Results for questionnaire will be overwritten"))
+    } else {
+      sett[["quest"]][[abbr]] <- list()
+    }
+
+    sett_q_final[["quest"]][[abbr]] <- sett_q
     assign(sett_name, sett_q_final, env = .GlobalEnv)
-
   }
-
 }

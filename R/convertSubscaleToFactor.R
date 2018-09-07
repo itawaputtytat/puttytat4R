@@ -11,20 +11,20 @@ convertSubscaleToFactor <- function(dat,
   ## First result is enough
   row_finder <-
     grepl(col_name_overall_suffix,
-          dat_bsss_scores_long[, col_name_subscale])
+          dat[, col_name_subscale])
   row_finder <- which(row_finder)[1]
 
   ## If there is no values named overall
-  if (length(row_finder) == 0) {
+  if (is.na(row_finder)) {
 
     levels <- c(levels)
-    labels <- rec(labels)
+    labels <- rev(labels)
 
     ## If there is a values names overall
   } else {
 
     ## Get the name for overall subscale value
-    col_name_overall <- dat_bsss_scores_long[row_finder, col_name_subscale]
+    col_name_overall <- dat[row_finder, col_name_subscale]
 
     ## Name total column
     if (lang == "ger") {
